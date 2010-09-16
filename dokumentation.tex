@@ -44,14 +44,23 @@
 % This section sets the properties for listings. Listings are used to display
 % verbatim (unformatted and with a fixed width font style) text like source
 % code or terminal sessions.  Source code formatting can be set in detail:
+\usepackage{color}
 \usepackage{listings}
 	% Global / primary settings for source code listing package
+\definecolor{lightyellow}{rgb}{1,0.94,0.51}
 \lstset{
     basicstyle=\ttfamily,
     showspaces=false,
+    frame=single,
+    xleftmargin=10pt,
+    xrightmargin=10pt,
+    framerule=0pt,
+    aboveskip=10pt,
+    belowskip=5pt,
     showstringspaces=false,
     captionpos=b, 
-    columns=fullflexible}
+    columns=fullflexible,
+    backgroundcolor=\color{lightyellow}}
 
 % Define the listing shortcuts for terminal code (bash)
 \lstnewenvironment{terminalcode}[1][]{\lstset{language=bash,#1}}{} 
@@ -69,7 +78,7 @@
 % Here the properties for the title of the document are set
 \date{HS 2010 University Bern}
 \author{PASCAL YVES ZAUGG}
-\title{Trying to understand LaTex}
+\title{Trying to understand the tutorial}
 
 %=============================================================================
 % Past this line the real content of the file starts with \begin{document} and
@@ -111,8 +120,6 @@ exist several sectioning levels:
 \item{} \verb$\subsection{NAME}$
 \item{} \verb$\subsubsection{NAME}$
 \item{} \verb$\paragraph{NAME}$
-\item{} My Item!
-\item{} Another Item!
 \end{enumerate}
 
 % the \noindent causes the folowing block not to be indented ( = having a 
@@ -190,16 +197,27 @@ is added with a \verb$\item$ between the \texttt{begin} and \texttt{end}.
 % ----------------------------------------------------------------------------
 \section{Vim}
 
+\subsection{Generalities}
+\begin{description}
+\item{:q} Quit vim.
+\item{:q!} Quit vim and ignore warnings.
+\item{:w} Save file.
+\item{:w filename.txt} Save file to filename.txt.
+\item{:!} Start an extern command.
+\end{description}
+
 \subsection{Insert-Mode}
 \begin{description}
 \item{i} Start Insert-Mode in front of the cursor (\textbf{i}nsert).
 \item{a} Start Insert-Mode behind the cursor (\textbf{a}ppend).
 \item{A} Start Insert-Mode at the end of the line (\textbf{A}ppend).
+\item{R} Start Replace-Mode (Existing characters are replaced while typing)
+\item{r{\sl CHARACTER}} Replace character at cursor position with CHARACTER.
 \end{description}
 
 \subsection{Jumping between lines}
 \begin{description}
-\item{LINENUMBERG} Cursor jumps to the line number previously typed. Example: 450G jumps to the line 450. NOTE: You won't see the line number while typing it.
+\item{{\sl LINENUMBER}G} Cursor jumps to the line number previously typed. Example: 450G jumps to the line 450. NOTE: You won't see the line number while typing it.
 \item{gg} Cursor jumps to the start of the file.
 \item{G} Cursor jumps to the end of the file. 
 \end{description}
@@ -214,12 +232,24 @@ is added with a \verb$\item$ between the \texttt{begin} and \texttt{end}.
 \noindent Some stuff which fits in here but doesn't use the d-command
 \begin{description}
 \item{x} Deleting and saving one character.
-\item{NUMBERx} Deleting and saving the declared count of characters.
+\item{{\sl NUMBER}x} Deleting and saving the declared count of characters.
 \item{:j!} Deleting the newline at the end and \textbf{j}oining the next line.
 \end{description}
 
+\subsection{Search}
+\begin{description}
+\item{\verb$\KEYWORD$} Search KEYWORD in file.
+\item{n} Go to the next match of KEYWORD.
+\item{N} Go to previous match of KEYWORD.
+\end{description}
 \section{Bash-Commands}
 
+\subsection{Generalities}
+\begin {description}
+\item{.} stands for the working directory.
+\item{..} stands for parent directory of the working directory.
+\item{\verb$~$} stands for home directory.
+\end {description}
 \subsection{cd - change directories}
 
 With cd YOUR\verb$_$PREFERED\verb$_$DIRECTORY you can change your current directory. With cd .. you go one directory up. NOTE: Use tab-completion to make your live easier.
@@ -258,8 +288,33 @@ A file's content is directly printed to the terminal. Terminal commands are dire
 
 \subsection{ssh - remote login program}
 
-\subsection{}
+\subsection{grep - print lines matching a pattern}
+With grep [ARGUMENT] PATTERN [FILENAME] you can print the lines matching PATTERN in a file. Use -c to count the lines where PATTERN occurs. Use -n to print linenumber in the file as well. Use -v to invert the result (all non-matching lines are printed). Use -i to ignore case distinctions.
+\subsection{less - forward and backward movement through files}
+With less [ARGUMENT] FILENAME you can scroll forward and backward through FILENAME. Use \verb$\PATTERN$ while running less to search for PATTERN. Use n to search next match. Use N to return to the previous match.
 
+\subsection{sort - sort lines of text files}
+With sort [ARGUMENT] FILENAME you can sort the lines of FILENAME. Use -n to sort by numbers. Use -r to sort in reversed order.
+
+\subsection{wc -print newline, word, and byte counts for each file}
+With wc [ARGUMENT] FILENAME you can count words, lines and characters and print the result. Use -w to count words. Use -l to count lines. Use -c to count characters.
+
+\subsection{du - estimate file space usage}
+With du [ARGUMENT] [DIRNAME] you can estimate file space usage. Use -h to make the output human-readable (summarizes Bytes to Megabytes etc.). Use -s to print only the summarized result. Use a to print file space for files as well. 
+
+\subsection{find - search for files in a directory hierarchy}
+With find [DIRNAME] [ARGUMENT] you can find directories and files. Use -type f to look only for files. Use -type d to look only for directories. Use -regex PATTERN to use a pattern to find files or directories. Use -iregex PATTERN to use the regex without case sensivity. Use .* in regex to tell find that there can be characters in front or at the end. 
+
+\paragraph{Examples:} Some examples to understand the way find works.
+\begin{terminalcode}
+find -type f -regex .*r.*
+\end{terminalcode}
+Looks for all files containing an 'r'.
+
+\begin{terminalcode}
+find -type d -iregex .*r.*
+\end{terminalcode}
+Looks for all directories containing an 'r' or an 'R'.
 %=============================================================================
 \section{Ruby Programming}
 
@@ -271,7 +326,7 @@ Modules are grouping similar methods together.
 
 \subsection{Bash-Commands}
 
-To use bash-command in ruby use \texttt{\`YOURBASHCOMMAND\`} (Backticks).
+To use bash-command in ruby use \texttt{\`{}YOURBASHCOMMAND\`} (Backticks).
 
 \subsection{Strings}
 
@@ -283,7 +338,7 @@ Strings are declared by \verb$#{name}$
 	\item{STRING.downcase} Returns STRING in lowercases.
 	\item{STRING.reverse} Returns STRING reversed.
 	\item{STRING.chomp} Returns STRING without newline at the end (if there is one).
-
+	\item{STRING.chop} Returns STRING without the last character.
 \end{description}
 
 \subsection{Arrays}
@@ -300,7 +355,7 @@ Creating an array:
 \item{\texttt{ARRAY.reject \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all false values.
 \item{\texttt{ARRAY.select \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all true values.
 \item{\texttt{ARRAY.each \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all elements of ARRAY.
-\item{\texttt{ARRAY.join ('SEPERATING\_ELEMENT)  }} Joins all elements of ARRAY to one string seperated by SEPERARTING\_ELEMENT.
+\item{\texttt{ARRAY.join ('SEPERATING\_ELEMENT')  }} Joins all elements of ARRAY to one string seperated by SEPERARTING\_ELEMENT.
 \item{\texttt{ARRAY.first}} Returns the first element of ARRAY.
 \item{\texttt{ARRAY.last}} Returns the last element of ARRAY.
 \item{\texttt{ARRAY+ARRAY2}} Returns a new list containing ARRAY and ARRAY2.
@@ -320,13 +375,13 @@ end
 
 \begin{terminalcode}
 def h (name = "World")
-puts "Hello \verb$#{name}$"
+  puts "Hello \verb$#{name}$"
 end
 \end{terminalcode}
 
 \subsection{Objects}
 
-Asking if a method responds (exists) for this type of objec for this type of object
+Asking if a method responds (exists) for this type of object for this type of object
 
 \begin{terminalcode}
 OBJECT.respond.to?("METHODNAME")
@@ -334,6 +389,154 @@ OBJECT.respond.to?("METHODNAME")
 
 
 %=============================================================================
+
+\subsection{Control structures}
+
+\paragraph{if}
+When CONDITION is true then the block until end is executed. Else the program jumps to end.
+\begin{terminalcode}
+if CONDITION
+  #add something    
+end
+\end{terminalcode}
+\paragraph{if-else}
+When CONDITION is true the block till else is executed. And then the programm jumps to end. Else the block from else till end is executed.
+\begin{terminalcode}
+if CONDITION
+  #add something
+else
+  #add something else
+end
+\end{terminalcode}
+
+\paragraph{while}
+As long CONDITION returns true the block from while to end is executed endlessly.
+\begin{terminalcode}
+while CONDITION 
+  #Change CONDITION here! 
+end  
+\end{terminalcode}
+
+\paragraph{for}
+
+Starting from NUMBER each time the program reaches 'end' the variable i is raised by one and starts again until i is bigger than NUMBER2.
+
+\begin{terminalcode}
+for i in (NUMBER..NUMBER2) do
+  #do something here with i
+end
+\end{terminalcode}
+
+\noindent NOTE: do is optional unless you write everything in one line.
+
+\begin{terminalcode}
+for i in (NUMBER..NUMBER2) do puts i end
+\end{terminalcode}
+
+\paragraph{case}
+
+If VARIABLE  matches MATCH1 then case returns RESULT1. If VARIABLE  matches MATCH2 then case returns RESULT2. Else case returns RESULT3.
+\begin{terminalcode}
+case VARIABLE
+  when MATCH1 then RESULT1
+  when MATCH2 then RESULT2
+  else RESULT3
+end
+\end{terminalcode}
+
+\noindent A working example: 
+
+\begin{terminalcode}
+a=240
+b = case a
+      when 1..50 then Small
+      when 51..100 then Medium
+      when 101..150 then Large
+      when 151..250 then X-Large
+      when 201..250 then XX-Large
+      else No such size exists
+    end
+    puts ``Your size is #{b}.''
+\end{terminalcode}
+
+\noindent Output: XX-Large
+
+\subsection{Example}
+
+The \#-sign declares a comment. Those lines are ignored by the compiler.
+\begin{terminalcode}
+# Script by Adrian Kuhn
+\end{terminalcode}
+Assigning the value "notes.txt" to \$fname
+\begin{terminalcode}
+$fname = 'notes.txt'
+\end{terminalcode}
+Assigning the value "vim" to \$editor
+\begin{terminalcode}
+$editor = 'vim'
+\end{terminalcode}
+"Touchs" the \$fname (in our case this is notes.txt) so that is created
+if it doesn't exist already. \#\{\} tells to the compiler that \$fname is a variable.
+\begin{terminalcode}
+`touch #{$fname}`
+\end{terminalcode}
+.last returns the last element of \$\*. In \$* you find the arguments given by the user in the terminal (after note.rb). \verb+/\?\?$/+ is a regular expression. It means look a the end of the String (the end of the line is signed by \$) if there are two ?. There is a \verb$\$ in front of the question mark because it can mean other things in regular expressions. \verb$=~$ means as much as 'there is a regular expression coming. Please evaluate'
+
+So what does this all mean now? Everytime when the last two characters of the last element of \$\* are ? then the following block is executed. Else the program jumps to 'elsif'.
+\begin{terminalcode}
+if $*.last =~ /\?\?$/
+\end{terminalcode}
+grep --ignore-case means using the bash command grep with the option 
+--ignore-case. grep searches the named input for lines containing a match and prints the matching line. View "man grep" to learn  more about grep. The backticks \verb$``$ are used to tell the compiler that this is an extern command to be executed. We already know what \#\{\}, \#\{\$fname\} and \$\* are and do. .join('SEPERATING\_ELEMENT') returns all elements put together to one string. The different elements are seperated by SEPERATING\_ELEMENT in our case this is a whitespace. So we have at the end something like "element1 element2 element3". .chop does remove the last character of a string.
+
+Overall this means that we are using the bash command "grep"  to look for a specific element(s) in our notes.txt file and assining the line(s), which consist this element(s), to the variable grep. In addition the result of \$\*.join(' ').chop.chop is assigned to the variable query.
+\begin{terminalcode}
+  grep = `grep --ignore-case "#{query = $*.join(' ').chop.chop}" #{$fname}`
+\end{terminalcode}
+.chomp does remove the newline at the end of a string. If there is one. .empty? does ask if there is something in a string. In this case it returns true. In the other case it returns false. "puts" does print the content of grep in the terminal. 
+In other words these two lines mean: If grep is not empty. Then grep is printed in the terminal. Else the programm goes on with the block after else.
+\begin{terminalcode}
+  unless grep.chomp.empty? 
+    puts grep
+\end{terminalcode}
+Nothing to tell you about the next two lines. You already know everything.
+\begin{terminalcode}
+  else 
+    puts "Nothing known about \"#{query}\" :("
+\end{terminalcode}
+"end" tells the compiler that this is the end of unless. If the first element of \$\* equals to --edit, then the following block is executed.
+\begin{terminalcode}
+elsif $*.first == '--edit'
+  `gnome-terminal --execute #{$editor} #{$fname}`
+\end{terminalcode}
+If the first element of \$\* equals to --hack, then the following block is
+executed.
+\begin{terminalcode}
+elsif $*.first == '--hack'
+  `gnome-terminal --execute #{$editor} \"#{__FILE__}\"`
+\end{terminalcode}
+If the first element of \$\* is not empty and it does not start with a "-"
+then excute the following block.
+\begin{terminalcode}
+elsif not \$\*.empty? and not \verb+$*.first =~ /^-/+ then
+\end{terminalcode}
+Open a file and tell it that you want to (a)ppend something. Learn more about
+Files: \verb$http://pleac.sourceforge.net/pleac_ruby/fileaccess.html$. The do command closes the file properly.
+\begin{terminalcode}
+  File.open($fname, 'a') do |file| 
+  file.puts "#{Time.now.strftime("%Y/%m/%d\t%H:%M:%S")}\t#{$*.join(' ')}"
+  end
+\end{terminalcode}
+If everything is falling appart (every if and elsif weren't excuted) then else 
+and its block is called.
+\begin{terminalcode}
+else  
+\end{terminalcode}
+tail: prints the last 10 lines of a file.  See "man tail" for more information. The rest you already know.
+\begin{terminalcode}
+  puts `tail #{$fname}`
+end
+\end{terminalcode}
 
 \end{document}
 
