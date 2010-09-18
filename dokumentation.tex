@@ -78,7 +78,7 @@
 % Here the properties for the title of the document are set
 \date{HS 2010 University Bern}
 \author{PASCAL YVES ZAUGG}
-\title{Trying to understand the terminal, Bash-Commands, Ruby an LaTex}
+\title{Trying to understand the terminal, Bash-Commands, Ruby and LaTex}
 
 %=============================================================================
 % Past this line the real content of the file starts with \begin{document} and
@@ -99,7 +99,7 @@
 %=============================================================================
 \subsection{Introduction} 
 
-% \LaTeX displays the latex logo, \xpsace a tiny space
+% \LaTeX displays the latex logo, \xspace a tiny space
 In this section we explain some \LaTeX\xspace details and different formatting
 commands.
 
@@ -112,7 +112,7 @@ to use the online recognition tool \texttt{detexify} at
 \subsection{Common Commands}
 % ----------------------------------------------------------------------------
 \subsubsection{Sectioning}
-Depening on the documentclass given in the very beginning of this file there
+Depending on the documentclass given in the very beginning of this file there
 exist several sectioning levels:
 % here we begin a list again but of another type named "enumerate":
 \begin{enumerate}
@@ -122,9 +122,9 @@ exist several sectioning levels:
 \item{} \verb$\paragraph{NAME}$
 \end{enumerate}
 
-% the \noindent causes the folowing block not to be indented ( = having a 
+% the \noindent causes the following block not to be indented ( = having a 
 % certain space at the beginning)
-\noindent To enforce \LaTeX to use a newline add a double slash \verb$\\$ at 
+\noindent To enforce \LaTeX\xspace to use a newline add a double slash \verb$\\$ at 
 the end of a line.
 
 % ----------------------------------------------------------------------------
@@ -177,7 +177,7 @@ is added with a \verb$\item$ between the \texttt{begin} and \texttt{end}.
 \item \texttt{itemize}
 \item \texttt{description} with \verb$\item[topic]$
 \end{itemize}
-% By adding a \noindet the next line is not indented ;)
+% By adding a \noindent the next line is not indented ;)
 \noindent Note that you can nest lists if you want to.
 
 \begin{enumerate}
@@ -233,7 +233,7 @@ is added with a \verb$\item$ between the \texttt{begin} and \texttt{end}.
 \begin{description}
 \item{x} Deleting and saving one character.
 \item{{\sl NUMBER}x} Deleting and saving the declared count of characters.
-\item{:j!} Deleting the newline at the end and \textbf{j}oining the next line.
+\item{:j} Deleting the newline at the end and \textbf{j}oining the next line.
 \end{description}
 
 \subsection{Search}
@@ -252,11 +252,11 @@ is added with a \verb$\item$ between the \texttt{begin} and \texttt{end}.
 \end {description}
 \subsection{cd - change directories}
 
-With cd YOUR\verb$_$PREFERED\verb$_$DIRECTORY you can change your current directory. With cd .. you go one directory up. NOTE: Use tab-completion to make your live easier.
+With cd YOUR\verb$_$PREFERRED\verb$_$DIRECTORY you can change your current directory. With cd .. you go one directory up. NOTE: Use tab-completion to make your live easier.
 
 \subsection{ls - list directory contents}
 
-With ls [ARGUMENT] YOUR\verb$_$PREFERED\verb$_$DIRECTORY you can show the content of a directory you prefered. Without a directory it lists the content of the current directory. Use the -l argument to list the content line by line and with some additional informations . Use the -R argument to list the content of subfolders as well. Use the -1 argument to list the content one file per line. 
+With ls [ARGUMENT] YOUR\verb$_$PREFERRED\verb$_$DIRECTORY you can show the content of a directory you preferred. Without a directory it lists the content of the current directory. Use the -l argument to list the content line by line and with some additional informations . Use the -R argument to list the content of subfolders as well. Use the -1 argument to list the content one file per line. 
 
 \subsection{pwd - print name of current/working directory}
 
@@ -264,7 +264,7 @@ With pwd [ARGUMENT] you can see the path of your working directory. Use -p to av
 
 \subsection{mkdir - make directories}
 
-With mkdir [ARGUMENT] YOUR\verb$_$DIRECTORY you can make your own directories. Use -p to avoid errors and parent directories ar created as needed.
+With mkdir [ARGUMENT] YOUR\verb$_$DIRECTORY you can make your own directories. Use -p to avoid errors and parent directories are created as needed.
 
 \subsection{touch - change file timestamps}
 
@@ -280,7 +280,7 @@ With cp [ARGUMENT] SOURCE DESTINATION you can copy files and directories. Use -r
 
 \subsection{rm - remove (unlink) files and directories}
 
-With rm [ARGUMENT] FILENAME [ANOTHERFILENAME] you can remove directories and files. Use -r to remove a directory and all its subfolders recoursivly. You can remove more than one file in adding them at the end.
+With rm [ARGUMENT] FILENAME [ANOTHERFILENAME] you can remove directories and files. Use -r to remove a directory and all its subfolders recursively. You can remove more than one file in adding them at the end.
 
 \subsection{cat - concatenate files and print on the standard output}
 
@@ -290,6 +290,7 @@ A file's content is directly printed to the terminal. Terminal commands are dire
 
 \subsection{grep - print lines matching a pattern}
 With grep [ARGUMENT] PATTERN [FILENAME] you can print the lines matching PATTERN in a file. Use -c to count the lines where PATTERN occurs. Use -n to print linenumber in the file as well. Use -v to invert the result (all non-matching lines are printed). Use -i to ignore case distinctions.
+
 \subsection{less - forward and backward movement through files}
 With less [ARGUMENT] FILENAME you can scroll forward and backward through FILENAME. Use \verb$\PATTERN$ while running less to search for PATTERN. Use n to search next match. Use N to return to the previous match.
 
@@ -303,7 +304,7 @@ With wc [ARGUMENT] FILENAME you can count words, lines and characters and print 
 With du [ARGUMENT] [DIRNAME] you can estimate file space usage. Use -h to make the output human-readable (summarizes Bytes to Megabytes etc.). Use -s to print only the summarized result. Use a to print file space for files as well. 
 
 \subsection{find - search for files in a directory hierarchy}
-With find [DIRNAME] [ARGUMENT] you can find directories and files. Use -type f to look only for files. Use -type d to look only for directories. Use -regex PATTERN to use a pattern to find files or directories. Use -iregex PATTERN to use the regex without case sensivity. Use .* in regex to tell find that there can be characters in front or at the end. 
+With find [DIRNAME] [ARGUMENT] you can find directories and files. Use -type f to look only for files. Use -type d to look only for directories. Use -regex PATTERN to use a pattern to find files or directories. Use -iregex PATTERN to use the regex without case sensitivity. Use .* in regex to tell find that there can be characters in front or at the end. 
 
 \paragraph{Examples:} Some examples to understand the way find works.
 \begin{terminalcode}
@@ -350,12 +351,12 @@ Creating an array:
 
 \begin{description}
 \item{\texttt{ARRAY.size}} Find out how many items the list contains
-\item{\texttt{ARRAY.sort}} Sort the array alphabetly
+\item{\texttt{ARRAY.sort}} Sort the array alphabetically
 \item{\texttt{ARRAY.collect \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all values.
 \item{\texttt{ARRAY.reject \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all false values.
 \item{\texttt{ARRAY.select \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all true values.
 \item{\texttt{ARRAY.each \{ |VARIABLENAME| block \}}} Invokes block ones for each element. Returns all elements of ARRAY.
-\item{\texttt{ARRAY.join ('SEPERATING\_ELEMENT')  }} Joins all elements of ARRAY to one string seperated by SEPERARTING\_ELEMENT.
+\item{\texttt{ARRAY.join ('SEPARATING\_ELEMENT')  }} Joins all elements of ARRAY to one string separated by SEPARATING\_ELEMENT.
 \item{\texttt{ARRAY.first}} Returns the first element of ARRAY.
 \item{\texttt{ARRAY.last}} Returns the last element of ARRAY.
 \item{\texttt{ARRAY+ARRAY2}} Returns a new list containing ARRAY and ARRAY2.
@@ -384,7 +385,7 @@ end
 Asking if a method responds (exists) for this type of object for this type of object
 
 \begin{terminalcode}
-OBJECT.respond.to?("METHODNAME")
+OBJECT.respond_to?("METHODNAME")
 \end{terminalcode}
 
 
@@ -400,7 +401,7 @@ if CONDITION
 end
 \end{terminalcode}
 \paragraph{if-else}
-When CONDITION is true the block till else is executed. And then the programm jumps to end. Else the block from else till end is executed.
+When CONDITION is true the block till else is executed. And then the program jumps to end. Else the block from else till end is executed.
 \begin{terminalcode}
 if CONDITION
   #add something
@@ -475,21 +476,21 @@ Assigning the value "vim" to \$editor
 \begin{terminalcode}
 $editor = 'vim'
 \end{terminalcode}
-"Touchs" the \$fname (in our case this is notes.txt) so that is created
+"Touches" the \$fname (in our case this is notes.txt) so that is created
 if it doesn't exist already. \#\{\} tells to the compiler that \$fname is a variable.
 \begin{terminalcode}
 `touch #{$fname}`
 \end{terminalcode}
-.last returns the last element of \$\*. In \$* you find the arguments given by the user in the terminal (after note.rb). \verb+/\?\?$/+ is a regular expression. It means look a the end of the String (the end of the line is signed by \$) if there are two ?. There is a \verb$\$ in front of the question mark because it can mean other things in regular expressions. \verb$=~$ means as much as 'there is a regular expression coming. Please evaluate'
+.last returns the last element of \$\*. In \$* you find the arguments given by the user in the terminal (after note.rb). \verb+/\?\?$/+ is a regular expression. It means look at the end of the String (the end of the line is signed by \$) if there are two ?. There is a \verb$\$ in front of the question mark because it can mean other things in regular expressions. \verb$=~$ means as much as 'there is a regular expression coming. Please evaluate'
 
 So what does this all mean now? Everytime when the last two characters of the last element of \$\* are ? then the following block is executed. Else the program jumps to 'elsif'.
 \begin{terminalcode}
 if $*.last =~ /\?\?$/
 \end{terminalcode}
 grep --ignore-case means using the bash command grep with the option 
---ignore-case. grep searches the named input for lines containing a match and prints the matching line. View "man grep" to learn  more about grep. The backticks \verb$``$ are used to tell the compiler that this is an extern command to be executed. We already know what \#\{\}, \#\{\$fname\} and \$\* are and do. .join('SEPERATING\_ELEMENT') returns all elements put together to one string. The different elements are seperated by SEPERATING\_ELEMENT in our case this is a whitespace. So we have at the end something like "element1 element2 element3". .chop does remove the last character of a string.
+--ignore-case. grep searches the named input for lines containing a match and prints the matching line. View "man grep" to learn  more about grep. The backticks \verb$``$ are used to tell the compiler that this is an extern command to be executed. We already know what \#\{\}, \#\{\$fname\} and \$\* are and do. .join('SEPARATING\_ELEMENT') returns all elements put together to one string. The different elements are separated by SEPARATING\_ELEMENT in our case this is a whitespace. So we have at the end something like "element1 element2 element3". .chop does remove the last character of a string.
 
-Overall this means that we are using the bash command "grep"  to look for a specific element(s) in our notes.txt file and assining the line(s), which consist this element(s), to the variable grep. In addition the result of \$\*.join(' ').chop.chop is assigned to the variable query.
+Overall this means that we are using the bash command "grep"  to look for a specific element(s) in our notes.txt file and assigning the line(s), which consist this element(s), to the variable grep. In addition the result of \$\*.join(' ').chop.chop is assigned to the variable query.
 \begin{terminalcode}
   grep = `grep --ignore-case "#{query = $*.join(' ').chop.chop}" #{$fname}`
 \end{terminalcode}
@@ -504,7 +505,7 @@ Nothing to tell you about the next two lines. You already know everything.
   else 
     puts "Nothing known about \"#{query}\" :("
 \end{terminalcode}
-"end" tells the compiler that this is the end of unless. If the first element of \$\* equals to --edit, then the following block is executed.
+"end" tells the compiler that this is the end of unless. If the first element of \$\* equals to --edit, then the following block is executed. NOTE: you can use exec("${#editor) #{$frname}"). If you do so, then ruby abborts the running scipt and replace it with the one in the brackets.
 \begin{terminalcode}
 elsif $*.first == '--edit'
   `gnome-terminal --execute #{$editor} #{$fname}`
